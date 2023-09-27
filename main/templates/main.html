@@ -3,6 +3,7 @@
 {% block content %}
     <h1>Shopping List Page</h1>
 
+    
     <h5>Name:</h5>
     <p>{{name}}</p>
 
@@ -25,6 +26,18 @@
             <td>{{product.price}}</td>
             <td>{{product.description}}</td>
             <td>{{product.date_added}}</td>
+            <td>
+                <a href="{% url 'main:edit_product' product.pk %}">
+                    <button>
+                        Edit
+                    </button>
+                </a>
+                <a href="{% url 'main:delete_product' product.pk %}">
+                    <button>
+                        Delete
+                    </button>
+                </a>
+            </td>
         </tr>
     {% endfor %}
 </table>
@@ -37,11 +50,15 @@
     </button>
 </a>
 
-<a href="{% url 'main:logout' %}">
-    <button>
-        Logout
-    </button>
-</a>
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand">Fathirahma Alyssa Pristanti</a>
+      <a href="{% url 'main:logout' %}">
+        <button class="btn btn-outline-success" type="button">Log Out</button>
+    </a>
+    </div>
+  </nav>
+
 <h5>Sesi terakhir login: {{ last_login }}</h5>
 
 {% endblock content %}
